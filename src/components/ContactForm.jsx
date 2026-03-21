@@ -1,94 +1,112 @@
-import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
+import { useState } from "react";
+import { FaUser, FaPhoneAlt, FaEnvelope, FaCommentDots } from "react-icons/fa";
 
 export default function ContactForm() {
-  const form = useRef();
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
 
-  const sendEmail = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    setMessage("");
 
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        form.current,
-        "YOUR_PUBLIC_KEY"
-      )
-      .then(
-        () => {
-          setLoading(false);
-          setMessage("Message sent successfully.");
-          form.current.reset();
-        },
-        () => {
-          setLoading(false);
-          setMessage("Failed to send message.");
-        }
-      );
+    const whatsappMessage = `Hello Unity Lift Solutions,%0A%0AName: ${formData.name}%0APhone: ${formData.phone}%0AEmail: ${formData.email}%0ARequirement: ${formData.message}`;
+
+    window.open(`https://wa.me/918700116436?text=${whatsappMessage}`, "_blank");
   };
 
   return (
-    <section className="bg-slate-950 py-20 text-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 md:grid-cols-2 md:px-6">
+    <form onSubmit={handleSubmit} className="w-full">
+      <div className="grid gap-5">
         <div>
-          <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-amber-400">
-            Contact Us
-          </p>
-          <h2 className="text-3xl font-extrabold leading-tight md:text-5xl">
-            Let’s Discuss Your Lift Requirement
-          </h2>
-          <p className="mt-5 max-w-xl leading-8 text-slate-300">
-            Share your project details and our team will contact you with the best lift solution.
-          </p>
+          <label className="mb-2 block text-sm font-semibold text-slate-700">
+            Your Name
+          </label>
+          <div className="flex items-center rounded-2xl border border-slate-200 bg-slate-50 px-4 focus-within:border-rose-400 focus-within:bg-white focus-within:shadow-sm">
+            <FaUser className="mr-3 text-slate-400" />
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Enter your full name"
+              className="w-full bg-transparent py-4 text-slate-800 outline-none placeholder:text-slate-400"
+              required
+            />
+          </div>
         </div>
 
-        <form
-          ref={form}
-          onSubmit={sendEmail}
-          className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+        <div>
+          <label className="mb-2 block text-sm font-semibold text-slate-700">
+            Phone Number
+          </label>
+          <div className="flex items-center rounded-2xl border border-slate-200 bg-slate-50 px-4 focus-within:border-rose-400 focus-within:bg-white focus-within:shadow-sm">
+            <FaPhoneAlt className="mr-3 text-slate-400" />
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Enter your phone number"
+              className="w-full bg-transparent py-4 text-slate-800 outline-none placeholder:text-slate-400"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label className="mb-2 block text-sm font-semibold text-slate-700">
+            Email Address
+          </label>
+          <div className="flex items-center rounded-2xl border border-slate-200 bg-slate-50 px-4 focus-within:border-rose-400 focus-within:bg-white focus-within:shadow-sm">
+            <FaEnvelope className="mr-3 text-slate-400" />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your email address"
+              className="w-full bg-transparent py-4 text-slate-800 outline-none placeholder:text-slate-400"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label className="mb-2 block text-sm font-semibold text-slate-700">
+            Your Requirement
+          </label>
+          <div className="flex rounded-2xl border border-slate-200 bg-slate-50 px-4 focus-within:border-rose-400 focus-within:bg-white focus-within:shadow-sm">
+            <FaCommentDots className="mr-3 mt-5 text-slate-400" />
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              rows="5"
+              placeholder="Write your requirement here..."
+              className="w-full resize-none bg-transparent py-4 text-slate-800 outline-none placeholder:text-slate-400"
+              required
+            />
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          className="mt-2 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-rose-500 to-amber-400 px-6 py-4 text-base font-semibold text-white shadow-lg transition duration-300 hover:-translate-y-0.5 hover:shadow-xl"
         >
-          <input
-            type="text"
-            name="user_name"
-            placeholder="Your Name"
-            className="w-full rounded-xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none"
-            required
-          />
-          <input
-            type="tel"
-            name="user_phone"
-            placeholder="Phone Number"
-            className="w-full rounded-xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none"
-            required
-          />
-          <input
-            type="email"
-            name="user_email"
-            placeholder="Email Address"
-            className="w-full rounded-xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none"
-          />
-          <textarea
-            name="message"
-            rows="5"
-            placeholder="Write your requirement..."
-            className="w-full rounded-xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none"
-            required
-          ></textarea>
-
-          <button
-            type="submit"
-            className="w-full rounded-xl bg-amber-400 px-6 py-3 font-semibold text-slate-900 transition hover:scale-[1.01]"
-          >
-            {loading ? "Sending..." : "Send Enquiry"}
-          </button>
-
-          {message && <p className="text-sm text-slate-300">{message}</p>}
-        </form>
+          Send Enquiry
+        </button>
       </div>
-    </section>
+    </form>
   );
 }
