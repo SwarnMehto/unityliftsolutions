@@ -163,26 +163,6 @@ export default function Hero() {
                 Call Now
               </a>
             </motion.div>
-
-            <motion.div
-              custom={0.44}
-              variants={fadeUp}
-              className="mt-8 grid max-w-xl grid-cols-2 gap-4"
-            >
-              <div className="rounded-3xl border border-white/70 bg-white/80 p-5 shadow-lg backdrop-blur-xl">
-                <p className="text-sm text-slate-500">Installations Completed</p>
-                <h3 className="mt-1 text-3xl font-extrabold text-rose-500">
-                  150+
-                </h3>
-              </div>
-
-              <div className="rounded-3xl border border-white/70 bg-white/80 p-5 shadow-lg backdrop-blur-xl">
-                <p className="text-sm text-slate-500">Service Availability</p>
-                <h3 className="mt-1 text-3xl font-extrabold text-violet-500">
-                  24/7
-                </h3>
-              </div>
-            </motion.div>
           </motion.div>
 
           <motion.div

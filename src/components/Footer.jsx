@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function Footer() {
@@ -29,11 +30,15 @@ export default function Footer() {
         <div>
           <h4 className="mb-3 text-lg font-semibold">Links</h4>
           <div className="flex flex-col gap-2 text-slate-300">
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/products">Products</a>
-            <a href="/services">Services</a>
-            <a href="/contact">Contact</a>
+            <Link to="/" className="transition hover:text-white">Home</Link>
+            <Link to="/about" className="transition hover:text-white">About</Link>
+            <Link to="/products" className="transition hover:text-white">Products</Link>
+            <Link to="/services" className="transition hover:text-white">Services</Link>
+            <Link to="/contact" className="transition hover:text-white">Contact</Link>
+            <Link to="/why-choose-us" className="transition hover:text-white">Why Choose Us</Link>
+            <Link to="/faqs" className="transition hover:text-white">FAQs</Link>
+            <Link to="/privacy-policy" className="transition hover:text-white">Privacy Policy</Link>
+            <Link to="/disclaimer" className="transition hover:text-white">Disclaimer</Link>
           </div>
         </div>
       </div>

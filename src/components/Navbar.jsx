@@ -39,6 +39,12 @@ export default function Navbar() {
           <NavLink to="/services" className={navLinkClass}>
             Services
           </NavLink>
+          <NavLink to="/why-choose-us" className={navLinkClass}>
+            Why Choose Us
+          </NavLink>
+          <NavLink to="/faqs" className={navLinkClass}>
+            FAQs
+          </NavLink>
           <NavLink to="/contact" className={navLinkClass}>
             Contact
           </NavLink>
@@ -57,6 +63,7 @@ export default function Navbar() {
         <button
           onClick={() => setOpen(!open)}
           className="text-2xl text-slate-800 md:hidden"
+          aria-label="Toggle menu"
         >
           {open ? <FaTimes /> : <FaBars />}
         </button>
@@ -64,51 +71,26 @@ export default function Navbar() {
 
       {open && (
         <div className="border-t border-slate-200 bg-white px-4 py-4 md:hidden">
-          <div className="mb-4 flex flex-col items-start">
-            <img
-              src="/logo.png"
-              alt="Unity Lift Solutions Logo"
-              className="h-14 w-auto object-contain"
-            />
-            <p className="mt-1 text-xs font-semibold tracking-wide text-slate-500">
-              Safe • Smart • Reliable
-            </p>
-          </div>
-
           <nav className="flex flex-col gap-4">
-            <NavLink
-              to="/"
-              className={navLinkClass}
-              onClick={() => setOpen(false)}
-            >
+            <NavLink to="/" className={navLinkClass} onClick={() => setOpen(false)}>
               Home
             </NavLink>
-            <NavLink
-              to="/about"
-              className={navLinkClass}
-              onClick={() => setOpen(false)}
-            >
+            <NavLink to="/about" className={navLinkClass} onClick={() => setOpen(false)}>
               About
             </NavLink>
-            <NavLink
-              to="/products"
-              className={navLinkClass}
-              onClick={() => setOpen(false)}
-            >
+            <NavLink to="/products" className={navLinkClass} onClick={() => setOpen(false)}>
               Products
             </NavLink>
-            <NavLink
-              to="/services"
-              className={navLinkClass}
-              onClick={() => setOpen(false)}
-            >
+            <NavLink to="/services" className={navLinkClass} onClick={() => setOpen(false)}>
               Services
             </NavLink>
-            <NavLink
-              to="/contact"
-              className={navLinkClass}
-              onClick={() => setOpen(false)}
-            >
+            <NavLink to="/why-choose-us" className={navLinkClass} onClick={() => setOpen(false)}>
+              Why Choose Us
+            </NavLink>
+            <NavLink to="/faqs" className={navLinkClass} onClick={() => setOpen(false)}>
+              FAQs
+            </NavLink>
+            <NavLink to="/contact" className={navLinkClass} onClick={() => setOpen(false)}>
               Contact
             </NavLink>
 
