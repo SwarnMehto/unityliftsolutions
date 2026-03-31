@@ -38,7 +38,7 @@ export default function Navbar() {
           </NavLink>
 
           <NavLink to="/services" className={navLinkClass}>
-            Product Categories
+            Our Services
           </NavLink>
 
           <NavLink to="/about" className={navLinkClass}>
@@ -81,7 +81,7 @@ export default function Navbar() {
             </NavLink>
 
             <NavLink to="/services" className={mobileLinkClass} onClick={() => setOpen(false)}>
-              Product Categories
+              Our Services
             </NavLink>
 
             <NavLink to="/about" className={mobileLinkClass} onClick={() => setOpen(false)}>
